@@ -1,0 +1,96 @@
+{
+  "app_id": "filedropdocker",
+  "title": "filedrop-v2",
+  "image": "noecl/filedrop:1.0.1",
+  "repo_name": "filedrop",
+  "mode": "plain",
+  "container_port": 8000,
+  "category": [
+    "Utilities"
+  ],
+  "volumes": [
+    {
+      "host": "/Volume1/DockerAppData/filedropdocker/var_file_drop_files",
+      "container": "/var/file_drop_files"
+    }
+  ],
+  "env": {
+    "TZ": "Asia/Shanghai"
+  },
+  "auth": "Noe-Favier",
+  "upstream_url": "https://github.com/Noe-Favier/filedrop-v2",
+  "upstream_license": "Apache-2.0",
+  "descript": "A web app to drop files from a server to clients. Packaged for TerraMaster TOS 7: the official Docker Hub image runs as a container on your NAS, keeps its data in the application data folder (so it survives restarts and updates), and is opened from its desktop icon.",
+  "release_note": "1. First release.",
+  "important": "First run: open the web UI and complete the initial setup. Data lives in /Volume1/DockerAppData/filedropdocker/ and survives restarts and updates. The container runs as uid 1000, so mounted folders must be readable by that user. Needs DockerEngine; configure a registry mirror if Docker Hub is unreachable. Back up the application data folder before uninstalling with data removal. Plain HTTP on the LAN.",
+  "probe": {
+    "user_in_image": "(root)",
+    "entrypoint": [
+      "/bin/sh",
+      "/filedrop/run-filedrop-v2.sh"
+    ],
+    "cmd": null,
+    "exposed_ports": [
+      8000
+    ],
+    "declared_volumes": [
+      "/var/file_drop_files"
+    ],
+    "image_healthcheck": [],
+    "digest": "docker.1panel.live/noecl/filedrop@sha256:eda806b607d00ec081d6e750b80a538bc4f86c960a3574ef311a78552fc926e9",
+    "architecture": "x86_64",
+    "platforms": [],
+    "http_client_in_image": "wget",
+    "trial_run": {
+      "ok": true,
+      "http_code": "200",
+      "state": "running",
+      "paths": [
+        "/var"
+      ],
+      "host_port": 18000,
+      "log_tail": "running filedrop-v2\nhas replaced secret key\nsed: can't create temp file 'Rocket.tomlXXXXXX': Permission denied",
+      "files_in_mounts": ""
+    },
+    "docker_hub": {},
+    "github": {
+      "owner": "Noe-Favier",
+      "repo": "filedrop-v2",
+      "description": "A web app to drop files from a server to clients",
+      "license": "Apache-2.0",
+      "homepage": ""
+    }
+  },
+  "healthcheck": [
+    "CMD-SHELL",
+    "wget -q -O /dev/null http://127.0.0.1:8000/ || exit 1"
+  ],
+  "platform": "x86_64",
+  "user": "1000:1000",
+  "publisher": "Moechz",
+  "compose_project": "filedropdocker",
+  "github_repo": "filedrop",
+  "upstream_version": "1.0.1",
+  "release_tag_prefix": "v",
+  "version": "1.0.1-1",
+  "help": "https://github.com/Moechz/filedrop/issues",
+  "official": "https://github.com/Noe-Favier/filedrop-v2",
+  "license": "Apache-2.0",
+  "docker_socket": false,
+  "group_add": [],
+  "platforms": [
+    "x86_64",
+    "aarch64"
+  ],
+  "translations": {
+    "zh-cn": {
+      "descript": "内网文件投递/收集页面，无需账号即可上传。",
+      "important": "首次使用请打开网页完成初始化。数据保存在 DockerAppData/filedropdocker，重启和升级不会丢失。容器以 uid 1000 运行，挂载目录需对该用户可读。需要 DockerEngine；Docker Hub 不可达时先配置镜像加速。卸载并删除数据前请备份。局域网内为 HTTP。"
+    },
+    "zh-hk": {
+      "descript": "内网文件投递/收集页面，无需账号即可上传。",
+      "important": "首次使用請開啟網頁完成初始化。資料保存在 DockerAppData/filedropdocker，重新啟動和升級不會遺失。容器以 uid 1000 運行，掛載目錄需對該使用者可讀。需要 DockerEngine；Docker Hub 不可達時先設定鏡像加速。解除安裝並刪除資料前請備份。區域網路內為 HTTP。"
+    }
+  },
+  "host_port": 8047
+}
