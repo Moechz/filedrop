@@ -72,7 +72,7 @@
   "github_repo": "filedrop",
   "upstream_version": "1.0.1",
   "release_tag_prefix": "v",
-  "version": "1.0.1-1",
+  "version": "1.0.1-2",
   "help": "https://github.com/Moechz/filedrop/issues",
   "official": "https://github.com/Noe-Favier/filedrop-v2",
   "license": "Apache-2.0",
